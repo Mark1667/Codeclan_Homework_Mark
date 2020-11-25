@@ -1,0 +1,135 @@
+---
+title: "Homework Day 3"
+output: html_notebook
+---
+
+
+
+
+```{r}
+library(tidyverse)
+library(dplyr)
+```
+
+```{r}
+
+moviehomework<- read_csv("data/movies.csv")
+
+```
+
+```{r}
+head (moviehomework
+      )
+```
+
+```{r}
+dim(moviehomework)
+```
+
+
+`
+```{r}
+
+  
+  movies_selected <- select(moviehomework, title, runtime, budget)
+
+  movies_selected
+
+```
+`
+```{r}
+movies_selected %>% 
+  filter(is.na(title))
+```
+
+```{r}
+movies_selected %>% 
+  filter(is.na(runtime))
+```
+
+
+```{r}
+movies_selected %>% 
+  filter(is.na(budget))
+```
+```{r}
+movies_selected %>% 
+  summarise(count = sum(is.na(title)))
+```
+```{r}
+movies_selected %>% 
+  summarise(count = sum(is.na(runtime)))
+```
+```{r}
+movies_selected %>% 
+  summarise(count = sum(is.na(budget)))
+```
+
+
+```{r}
+
+movies_runtime <- movies_selected %>%
+  mutate(runtime = na_if(runtime, 0))
+movies_runtime %>% 
+  
+  filter(is.na(runtime))
+  
+  
+
+
+
+
+```
+
+```{r}
+movies_runtime %>% 
+  summarise(count = sum(is.na(runtime)))
+```
+
+```{r}
+
+movies_imputed <- movies_runtime %>% 
+  mutate(runtime = coalesce(runtime, median(runtime, na.rm = TRUE)))  
+
+movies_imputed
+```
+
+
+
+```{r}
+movies_imputed %>% 
+
+summarise(count = sum(is.na(runtime)))
+```
+
+```{r}
+
+movies_imputed %>% 
+  slice_max(runtime, n = 10)
+movies_imputed %>% 
+  slice_min(runtime, n = 10)
+
+
+```
+
+```{r}
+
+medianbudget <- movies_imputed %>% 
+  mutate(
+    budget = if_else(budget < 100,median(budget),budget)
+  )
+
+medianbudget
+```
+
+
+
+```
+
+
+
+
+
+
+
+
