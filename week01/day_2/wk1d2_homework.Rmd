@@ -1,0 +1,152 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Question 1
+# Load in the dataset and have a look at it. What are the dimensions, variable types, variable names, etc.?
+
+```{r}
+library(tidyverse)
+starbucks <- read_csv("data/starbucks_drinkMenu_expanded.csv")
+starbucks
+```
+```{r}
+
+dim(starbucks)
+```
+
+```{r}
+names(starbucks)
+```
+
+```{r}
+head(starbucks)
+```   
+```{r}
+glimpse(starbucks)
+```
+
+
+# Question 2
+#Select the variables Beverage_category, Beverage, Beverage prep and Calories from your data. Since we are interested in the calorie content, check if there are any NA values in the data, and drop them if there are.
+  
+```{r}
+select(starbucks, Beverage_category, Beverage, Beverage_prep, Calories)
+```
+```{r}
+starbucks
+
+```
+```{r}
+is.na(starbucks)
+```
+
+```{r}
+select(starbucks, contains("NA"))
+```
+```{r}
+containsNA <- filter(select(starbucks, contains("NA")))
+
+    ```
+
+
+
+
+
+# Qustion 3
+# create dataset with column calorie-diff difference between 135 calories (135 calories = 10 cubes of sugar!)
+
+
+```{r}
+
+calcountdiff <-mutate(starbucks, calorie_diff = 135 - Calories)
+```
+#sort by calorie_diff column
+```{r}
+
+arrange(calcountdiff,calorie_diff)
+
+
+
+```
+
+#Create new data set containing only drinks with greater calorie count than 135
+
+```{r}
+High_Cal_Count <- filter(calcountdiff, calorie_diff < 0) 
+
+dim(High_Cal_Count)
+
+```
+
+```{r}
+names(starbucks)
+
+```
+
+# Question 4 
+# Summarise the mean number of calories in each beverage_category. Which 3 drinks have the most calories? Which 3 drinks have the least? Write a small summary of your findings.
+
+```{r}
+Group_bev <- group_by(starbucks, Beverage_category)
+
+summarise(Group_bev, mean_cal = mean(Calories))
+
+
+
+
+```
+Top 3 calorific drinks are 
+Smoothies	282.2222
+Frappuccino® Blended Coffee	276.9444, 
+Signature Espresso Drinks	250.0000
+
+Top 3 Least calorific drinks 
+
+Coffee	4.2500
+Shaken Iced Beverages	114.4444	
+Classic Espresso Drinks	140.1724	
+
+# Question 5
+# Let’s look at this a different way. What is the average number of calories in each Beverage_prep type?
+
+```{r}
+Group_bev_prep <- group_by(starbucks, Beverage_prep)
+
+summarise(Group_bev_prep, mean_cal2 = mean(Calories))
+
+```
+
+# Question 6
+# Which Beverage_prep type contains more than the average calories of all drinks?
+
+
+# Find the average calorie count for all drinks
+```{r}
+mutate(starbucks, avecalalldata = mean(Calories, na.rm = TRUE))
+```
+#Find the drinks containing more calories than the Average for all drinks
+```{r}
+
+Group_bev_prep <- group_by(starbucks, Beverage_prep)
+
+Group_bev_prep_cals <- summarise(Group_bev_prep, mean_cal2 = mean(Calories))
+
+
+
+filter(Group_bev_prep_cals, mean_cal2 >193.8719)
+```
+
+# Question 7 
+
+#Which is the best type of coffee drink to get if you’re worried about consuming too many calories?
+
+```{r}
+view(starbucks)
+
+arrange(starbucks,Calories)
+```
+
+
+
