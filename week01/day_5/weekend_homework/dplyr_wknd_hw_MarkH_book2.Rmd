@@ -1,0 +1,17 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+books2 <- read_csv("data/books2.csv")
+```
+```{r}
+problems(books2)
+
+
+```

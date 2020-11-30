@@ -1,0 +1,366 @@
+---
+title: "`dplyr` Weekend Homework"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    df_print: paged
+    css: ../../../styles.css
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE)
+```
+<br>
+
+
+
+As this is your first weekend homework, here are some tips: 
+
+* Try to schedule some time in your weekend to work on the homework so it's not suddenly Monday morning and you haven't gotten started yet (it happens).
+* Remember that the weekend homework is for your learning, so try to use it as an opportunity to apply and consolidate everything you've learned in the week.
+* Also use it as an opportunity to spend a bit more time making your code readable and reproducible, by practising commenting and writing some text around your steps and findings. You will thank yourself later! 
+  * This will be especially useful for this specific weekend homework as it's very open-ended and you will eventually forget your own thought process
+* A bit obvious, but don't spend your entire weekend working on the homework! Remember to spend time doing things you enjoy and rest up ahead of the following week.
+
+The data for this weekend homework is scraped from Goodreads (a website all about books) and made publicly available on Kaggle. You can read more about the data [here](https://www.kaggle.com/jealousleopard/goodreadsbooks).
+
+# MVP
+
+### First steps
+
+Load necessary packages and read in `books.csv`. Investigate dimensions, variables, missing values - you know the drill!
+
+### Up to you
+
+Now it's up to you... For this weekend homework there will be no specific tasks, just you and this dataset! Using everything you've learned this week, try to describe/summarise at least 5 things about this dataset - using R and the tidyverse of course! Feel free to find and use new functions if there is something that the tidyverse doesn't offer, but do try to use this homework to apply what you have learned this week. Be prepared to share one of your findings on Monday!
+
+### Remember
+
+Before you submit, go through your weekend homework and make sure your code is following best practices as laid out in the `coding_best_practice` lesson.
+
+
+
+```{r}
+library(tidyverse)
+#library(dplyr)
+```
+
+
+
+```{r}
+books <- read_csv("data/books.csv")
+```
+# row 1570 title has two sets of quotes therefore R confused as to whether its a delimiter or not
+
+# row 3349 has had an error causing data to jump a column from average rating onwards missing publisher at end 
+
+
+```{r}
+problems(books)
+```
+
+
+
+```{r}
+#view high level data to understand what I have got
+head(books)
+
+```
+
+```{r}
+# Check overall dimensions of data set and variable names----
+dim(books)
+names(books)
+```
+
+
+```{r}
+
+#create new tab to view books data in tabular form ----
+view(books)
+
+# print the data in console to view ----
+books
+
+# want to see the data types I have in data set----
+glimpse(books)
+        
+```
+
+#   INITIAL THOUGHTS ARE:
+#   Data hasn't loded correctly and 3000 missing lines  
+#   investigate csv file to see if I can fix issue 
+#   what data types do I have ?  double and character, some data is whole numbers so could covert to integer
+#   are there any data missing?
+#   are the data in right format?
+#   Rating based on differing population survey data 
+#   What is isbn and isbn13 data telling me?
+#   
+#   Some books have multiple authors
+#   average rating could be used to give top 5 and bottom 5 books
+#   might want to know book counts by author
+#   might want to know average rating for author
+#   what are the top and bottom three authors (ave_rating)
+#   might want to know how many book published by year
+#   might want to know how many books by each publisher 
+
+
+```{r}
+
+# Search for missing Values ie NA's-----
+books %>%
+summarise(across(.fns = ~sum(is.na(.x))))
+```
+
+
+
+
+```{r}
+### filter to show  NA's----
+
+missing_author <- filter(books,is.na(authors))
+
+  missing_rating <- filter(books, is.na(average_rating))
+
+    missing_pages <- filter(books, is.na(num_pages))
+
+
+
+missing_author    
+missing_rating    
+missing_pages
+```
+
+
+```{r}
+#Books don't have zero pages so convert to NA's - look  for rows where pages equal zero----
+books %>% 
+  filter(num_pages == 0)
+
+```
+
+
+
+```{r}
+#convert zero values to NA's----
+books_cln <- books %>% 
+
+mutate(num_pages = na_if(num_pages, 0))
+
+```
+
+
+
+
+```{r}
+#View data to see new count of NA within num_page column
+books_cln %>% 
+  filter(is.na(num_pages))
+```
+
+```{r}
+#calculate median page number using pull to obtain value
+medianpage <- summarise(books_cln, median_page = median(num_pages, na.rm =TRUE)) %>% 
+  pull()
+
+medianpage
+```
+
+
+
+
+```{r}
+## filter to show rows where average_rating have a value of NA's----
+books_cln %>% 
+  filter(is.na(average_rating))
+```
+
+
+
+```{r}
+#calculate median average_rating using pull to obtain value
+medianrate <- summarise(books, median_rating = median(average_rating, na.rm =TRUE)) %>% 
+  pull()
+
+medianrate
+```
+
+
+
+
+```{r}
+
+#Convert NA Pages and NA ratings to median----
+
+books_cln_imputed_median <- books_cln %>% 
+  mutate (num_pages = coalesce(num_pages, median(num_pages, na.rm =TRUE))) %>% 
+  mutate (average_rating = coalesce(average_rating, median(average_rating,na.rm = TRUE)))
+  books_cln_imputed_median
+
+
+```
+
+
+
+```{r}
+#check no more Na's in average_rating column
+books_cln_imputed_median %>% 
+  filter(is.na(average_rating))
+```
+
+
+```{r}
+#check median value has been updated to 3.96 for rate and 303 for num_page----
+
+view(books_cln_imputed_median)
+```
+
+
+
+
+```{r}
+# Recheck NA's across data set
+books_cln_imputed_median%>%
+summarise(across(.fns = ~sum(is.na(.x))))
+```
+
+
+
+
+
+```{r}
+
+  missing_author <- filter(books_cln_imputed_median,is.na(authors))
+   
+
+  missing_author
+
+# this row hasn't loaded correctly as all data added in author and has looks to be multiple entries - could be part of the reason for  missing 3000
+
+```
+
+```{r}
+
+missing_rating <- filter(books, is.na(average_rating))
+    
+missing_rating
+
+# Bookid 12224 is one of the original parsing error rows where data is all sitting one column out
+
+```
+
+
+
+
+
+```{r}
+names(books)
+```
+
+```{r}
+
+# Remove columns from books data and create new data set called filtered_books
+filtered_books <- select(books_cln_imputed_median, -bookID, -isbn, -isbn13, -language_code, -text_reviews_count)
+
+filtered_books
+```
+```{r}
+
+#Add column to filtered_books data and insert median_rate value
+mutate(filtered_books, median_rate = (medianrate))
+
+```
+
+
+```{r}
+# Group book data by authors, count number of books by author group and sort descending order 
+
+authors_group <- group_by(filtered_books, authors)
+
+  authors_counts <- summarise(authors_group, count = n())
+    authors_mean <- summarise(authors_group, avmeanrategroup = mean(average_rating, na.rm =TRUE))
+  
+    author_counts_arranged <- arrange(authors_counts, desc(count))
+    authors_mean_arranged <- arrange(authors_mean, desc(avmeanrategroup))
+
+
+head(author_counts_arranged, 5)
+tail(author_counts_arranged, 5)
+
+head(authors_mean_arranged, 5)
+tail(authors_mean_arranged, 5)
+```
+
+
+
+```{r}
+# Find the average of average_rating per group and add to author_count_arranged
+x <- summarise(authors_group, avmeanrategroup = mean(average_rating, na.rm =TRUE))
+  arrange(x, desc(avmeanrategroup))
+  
+  filter(x, authors =="Stephen King")
+```
+
+
+
+
+
+```{r}
+#Get top five authors ( by count) and their books
+Topfivebycount <- filter(books, authors == "Stephen King"| authors == "Rumiko Takahashi"| authors ==  "Piers Anthony"| authors ==  "Sandra Brown"| authors == "Dick Francis"| authors == "Mercedes Lackey")
+
+arrange (Topfivebycount, authors)
+
+```
+```{r}
+# Filter 
+Topfivebycount <- filter(books_cln_imputed_median, authors == "Stephen King"| authors == "Rumiko Takahashi"| authors ==  "Piers Anthony"| authors ==  "Sandra Brown"| authors == "Dick Francis"| authors == "Mercedes Lackey")
+
+arrange (Topfivebycount, desc(average_rating))
+```
+
+
+```{r}
+# view Stephen King group info
+books_authrtg <- select(books, authors, average_rating)
+filter(books_authrtg, authors == "Stephen King")
+  
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

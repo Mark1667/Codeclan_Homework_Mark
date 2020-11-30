@@ -1,0 +1,112 @@
+---
+title: "Homework_Day2 overview"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+```
+
+
+```{r}
+drinks_content <-read_csv("starbucks_drinkMenu_expanded.csv")
+```
+#view data
+```{r}
+glimpse(drinks_content)
+```
+
+
+dplyr verbs
+1. select
+2. filter
+3. arrange
+4. summarise /groupby
+5. mutate
+
+
+#question 2----
+check for na in column
+
+```{r}
+drinks_content %>% 
+  select(Beverage_category, Beverage, Beverage_prep, Calories) %>% 
+  
+filter(is.na(Calories))
+```
+
+#Question 3
+# create calories_diff ----
+```{r}
+
+drinks_content %>% 
+  mutate(calorie_diff = Calories - 135)
+
+```
+
+#Question 4-----
+
+# show top 3 ave calories----
+```{r}
+drinks_content %>% 
+  group_by(Beverage_category) %>% 
+  summarise(average_calories = mean(Calories)) %>% 
+arrange(average_calories)%>%
+  head(3)
+
+
+```
+
+```{r}
+drinks_content %>% 
+  group_by(Beverage_category) %>% 
+  summarise(average_calories = mean(Calories)) %>% 
+arrange(desc(average_calories))
+  
+  
+```
+
+# show bottom 3 ave calories----
+```{r}
+drinks_content %>% 
+  group_by(Beverage_category) %>% 
+  summarise(average_calories = mean(Calories)) %>% 
+arrange(desc(average_calories)) %>% 
+  tail(3)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

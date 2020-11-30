@@ -1,0 +1,18 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(tidyverse)
+
+
+```
+
+```{r}
+Book_data <- read_delim("data/books.csv", delim = "'")
+
+
+```
+
