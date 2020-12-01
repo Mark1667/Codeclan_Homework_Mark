@@ -1,0 +1,128 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+library(tidyverse)
+```
+
+```{r}
+tweet <- read_csv("data/code_clan_tweets.csv")
+```
+
+```{r}
+
+head(tweet)
+dim(tweet)
+names(tweet)
+```
+
+
+
+#Find the total number of favourited tweets (stored in favorite_count) that CodeClan tweets have got. Don’t add a tweet’s favorite_count to the total when the tweet was quoted (see the is_quote variable).
+
+```{r}
+favtweet <- tweet %>% 
+  select(favorite_count, is_quote) %>% 
+  filter(is_quote != TRUE) %>% 
+  summarise(total_count = sum(favorite_count))
+
+head(favtweet)
+```
+
+
+```{r}
+names(tweet)
+```
+
+
+#Summarise the mean number of retweets (retweet_count), split by the type of platform that was used to tweet (source). Again, omit quoted tweets from the mean.
+
+```{r}
+tweet %>% 
+  filter(is_quote != TRUE) %>% 
+  group_by(source) %>% 
+  
+  summarise(retweet_mean = mean(retweet_count)) %>% 
+
+arrange(desc(retweet_mean))
+
+```
+#Count the total number of likes (i.e. total of favorite_count), split by media type, and arrange them from most likes to least. Assume that any tweets without a listed media type are of type “text”.
+
+
+
+```{r}
+names(tweet)
+
+
+```
+
+
+#Count the total number of likes (i.e. total of favorite_count), split by media type, and arrange them from most likes to least. Assume that any tweets without a listed media type are of type “text”.
+
+
+```{r}
+tweet_selected <- select(tweet, tweet_id, favorite_count, media_type) 
+tweet_selected
+```
+
+
+
+```{r}
+tweet_selected %>% 
+  summarise(na_text = sum(is.na(media_type)))
+```
+
+```{r}
+imputed_tweet <- tweet_selected %>% 
+  mutate(media_type = coalesce(media_type, "text"))
+
+imputed_tweet
+
+```
+
+
+
+
+```{r}
+
+```
+
+
+```{r}
+imputed_tweet %>% 
+ 
+  group_by(media_type) %>% 
+  
+  summarise(fav_count= sum(favorite_count)) %>% 
+
+  arrange(desc(fav_count))
+```
+
+
+#Find the mean number of characters that a CodeClan tweet contains.
+
+
+
+```{r}
+
+
+
+
+```
+
+#The code_clan_info.csv data file contains status_url along with other info. Load this in, and join it to the code_clan_tweets tibble, so that you have a status_url for each tweet. Decide which variable to join the tibbles on.
+
+
+
+```{r}
+
+```
+
+#From your new joined data, create a new tibble codeclan_hashtags containing only the tweet_id and hashtags in lowercase for analysis. Keep only those tweets with hashtags.
+
+```{r}
+
+```
+
