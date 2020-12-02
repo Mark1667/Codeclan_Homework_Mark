@@ -51,7 +51,7 @@ drinks_content %>%
 drinks_content %>% 
   group_by(Beverage_category) %>% 
   summarise(average_calories = mean(Calories)) %>% 
-arrange(average_calories)%>%
+  arrange(average_calories)%>%
   head(3)
 
 

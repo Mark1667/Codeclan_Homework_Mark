@@ -1,0 +1,138 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+```
+
+
+
+student_info <- list(
+                "Agnes" = list(height = 1.8, shoe_size = 8L),
+                "Bobby" = list(height = 2.1, gender = "Male"),
+                "Charlie" = list(gender = "Female", likes_beets = TRUE)
+)
+names(student_info)`
+
+
+
+```{r}
+weather_ek <- list(
+                    Thursday = list(temp = 2, chance_rain = 33, wind_sp = 9),
+                    Friday = list(temp = 4, chance_rain = 58, wind_sp = 11),
+                    Saturday = list(temp = 5, chance_rain = 31, wind_sp = 10)
+)
+
+weather_ek
+
+
+```
+
+Using the list you’ve just made find:
+
+The chance of rain tomorrow
+The wind speed on the day after tomorrow
+The temperature tomorrow.
+
+
+
+
+```{r}
+weather_ek$Friday$chance_rain
+```
+    
+```{r}
+weather_ek$Saturday$wind_sp
+```
+    
+```{r}
+weather_ek$Thursday$temp
+```
+    
+Find a 14 day forecast online and create a matrix of the forecasts for temperature, where each week is one row and columns correspond to days.
+```{r}
+temp <- matrix(c(2,4,5,3,3,5,5,6,7,6,6,6,6,5), nrow = 2, ncol = 7, byrow = TRUE)
+```
+
+```{r}
+temp
+```
+
+
+The third day of the second week
+```{r}
+temp[2,3]
+```
+
+The whole second week
+```{r}
+
+temp[2, ]
+
+
+```
+
+The first, third and fifth days in both weeks
+
+
+```{r}
+
+temp[, c(1, 3, 5)]
+
+```
+
+
+
+
+Write a function that pre-appends “The answer is:” to any character input, while for numeric input, it either just returns the number for numbers less than 10, or divides the number by 10 for numbers greater than 10. For anything else return “Invalid input”.
+
+
+
+#if x = a:z then return "This answer is : (value of X)
+#else if x< 10 then return (value of x) ,else return "Invalid Input"
+
+```{r}
+  xcalc <- function(x){
+  if x = [[A:Z]], x, sep = '')  
+  }
+  
+xcalc[A]
+
+```
+
+
+
+
+
+```{r}
+xcalc <- function(x){
+
+  if (isalpha(x)){
+    print("this answer is:", x)
+    }else if (x < 10){
+      print(x)
+      }else
+    print("Invalid Input")
+  }
+xcalc(a)
+
+```
+
+
+Write a function which checks if two vectors have the same elements.
+
+If they have the same elements in the same order, return “Exactly the same”
+If they have the same elements but in a different order, return “The same”
+If they don’t have the same elements, return “Different”
+```{r}
+vect1 <- c(1,2)
+vect2 <- c(1,2)
+
+checkequal <- function(x,y){
+   return(x == y)
+}
+  
+```
+
