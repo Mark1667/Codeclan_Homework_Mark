@@ -107,16 +107,23 @@ xcalc[A]
 
 
 ```{r}
+
+library(stringr)
+
+x <- "a"
+
 xcalc <- function(x){
 
-  if (isalpha(x)){
+  if(!grepl("\\d", x)
+     {
+  
     print("this answer is:", x)
     }else if (x < 10){
       print(x)
       }else
     print("Invalid Input")
   }
-xcalc(a)
+xcalc(x)
 
 ```
 
@@ -132,7 +139,30 @@ vect2 <- c(1,2)
 
 checkequal <- function(x,y){
    return(x == y)
+  
+  
 }
   
+```
+
+```{r}
+y_function1 <- function(x){
+  if(is.character(x)){
+  print(str_c("The answer is:", x, sep = " "))
+  } else if(is.numeric(x)){
+    if(x < 10){
+      return (x)
+    }else {
+      return (x/10)
+    }
+  } else {
+  print("Invalid Input")
+  }
+}
+```
+
+```{r}
+y_function1("a")
+
 ```
 

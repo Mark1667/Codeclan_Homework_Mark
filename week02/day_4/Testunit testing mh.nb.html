@@ -1803,246 +1803,25 @@ summary {
 <pre class="r"><code>library(tidyverse)
 </code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2RzIG92ZXJ3cml0dGVuIGJ5ICdkYnBseXInOlxuICBtZXRob2QgICAgICAgICBmcm9tXG4gIHByaW50LnRibF9sYXp5ICAgICBcbiAgcHJpbnQudGJsX3NxbCAgICAgIFxu4pSA4pSAIEF0dGFjaGluZyBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDEuMy4wIOKUgOKUgFxu4pyTIGdncGxvdDIgMy4zLjIgICAgIOKckyBwdXJyciAgIDAuMy40XG7inJMgdGliYmxlICAzLjAuNCAgICAg4pyTIGRwbHlyICAgMS4wLjJcbuKckyB0aWR5ciAgIDEuMS4yICAgICDinJMgc3RyaW5nciAxLjQuMFxu4pyTIHJlYWRyICAgMS40LjAgICAgIOKckyBmb3JjYXRzIDAuNS4wXG5wYWNrYWdlIOKAmGdncGxvdDLigJkgd2FzIGJ1aWx0IHVuZGVyIFIgdmVyc2lvbiAzLjYuMnBhY2thZ2Ug4oCYdGliYmxl4oCZIHdhcyBidWlsdCB1bmRlciBSIHZlcnNpb24gMy42LjJwYWNrYWdlIOKAmHRpZHly4oCZIHdhcyBidWlsdCB1bmRlciBSIHZlcnNpb24gMy42LjJwYWNrYWdlIOKAmHJlYWRy4oCZIHdhcyBidWlsdCB1bmRlciBSIHZlcnNpb24gMy42LjJwYWNrYWdlIOKAmHB1cnJy4oCZIHdhcyBidWlsdCB1bmRlciBSIHZlcnNpb24gMy42LjJwYWNrYWdlIOKAmGRwbHly4oCZIHdhcyBidWlsdCB1bmRlciBSIHZlcnNpb24gMy42LjLilIDilIAgQ29uZmxpY3RzIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2VfY29uZmxpY3RzKCkg4pSA4pSAXG54IGRwbHlyOjpmaWx0ZXIoKSBtYXNrcyBzdGF0czo6ZmlsdGVyKClcbnggZHBseXI6OmxhZygpICAgIG1hc2tzIHN0YXRzOjpsYWcoKVxuIn0= -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2RzIG92ZXJ3cml0dGVuIGJ5ICdkYnBseXInOlxuICBtZXRob2QgICAgICAgICBmcm9tXG4gIHByaW50LnRibF9sYXp5ICAgICBcbiAgcHJpbnQudGJsX3NxbCAgICAgIFxu4pSA4pSAIEF0dGFjaGluZyBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDEuMy4wIOKUgOKUgFxu4pyTIGdncGxvdDIgMy4zLjIgICAgIOKckyBwdXJyciAgIDAuMy40XG7inJMgdGliYmxlICAzLjAuNCAgICAg4pyTIGRwbHlyICAgMS4wLjJcbuKckyB0aWR5ciAgIDEuMS4yICAgICDinJMgc3RyaW5nciAxLjQuMFxu4pyTIHJlYWRyICAgMS40LjAgICAgIOKckyBmb3JjYXRzIDAuNS4wXG5wYWNrYWdlIOKAmGdncGxvdDLigJkgd2FzIGJ1aWx0IHVuZGVyIFIgdmVyc2lvbiAzLjYuMnBhY2thZ2Ug4oCYdGliYmxl4oCZIHdhcyBidWlsdCB1bmRlciBSIHZlcnNpb24gMy42LjJwYWNrYWdlIOKAmHRpZHly4oCZIHdhcyBidWlsdCB1bmRlciBSIHZlcnNpb24gMy42LjJwYWNrYWdlIOKAmHJlYWRy4oCZIHdhcyBidWlsdCB1bmRlciBSIHZlcnNpb24gMy42LjJwYWNrYWdlIOKAmHB1cnJy4oCZIHdhcyBidWlsdCB1bmRlciBSIHZlcnNpb24gMy42LjJwYWNrYWdlIOKAmGRwbHly4oCZIHdhcyBidWlsdCB1bmRlciBSIHZlcnNpb24gMy42LjLilIDilIAgQ29uZmxpY3RzIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2VfY29uZmxpY3RzKCkg4pSA4pSAXG54IGRwbHlyOjpmaWx0ZXIoKSBtYXNrcyBzdGF0czo6ZmlsdGVyKClcbnggZHBseXI6OmxhZygpICAgIG1hc2tzIHN0YXRzOjpsYWcoKVxuIn0= -->
 <pre><code>Registered S3 methods overwritten by &#39;dbplyr&#39;:
   method         from
   print.tbl_lazy     
   print.tbl_sql      
-── Attaching packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
 ✓ tibble  3.0.4     ✓ dplyr   1.0.2
 ✓ tidyr   1.1.2     ✓ stringr 1.4.0
 ✓ readr   1.4.0     ✓ forcats 0.5.0
-package ‘ggplot2’ was built under R version 3.6.2package ‘tibble’ was built under R version 3.6.2package ‘tidyr’ was built under R version 3.6.2package ‘readr’ was built under R version 3.6.2package ‘purrr’ was built under R version 3.6.2package ‘dplyr’ was built under R version 3.6.2── Conflicts ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+package ‘ggplot2’ was built under R version 3.6.2package ‘tibble’ was built under R version 3.6.2package ‘tidyr’ was built under R version 3.6.2package ‘readr’ was built under R version 3.6.2package ‘purrr’ was built under R version 3.6.2package ‘dplyr’ was built under R version 3.6.2── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>student_info &lt;- list( “Agnes” = list(height = 1.8, shoe_size = 8L), “Bobby” = list(height = 2.1, gender = “Male”), “Charlie” = list(gender = “Female”, likes_beets = TRUE) ) names(student_info)`</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2VhdGhlcl9layA8LSBsaXN0KFxuICAgICAgICAgICAgICAgICAgICBUaHVyc2RheSA9IGxpc3QodGVtcCA9IDIsIGNoYW5jZV9yYWluID0gMzMsIHdpbmRfc3AgPSA5KSxcbiAgICAgICAgICAgICAgICAgICAgRnJpZGF5ID0gbGlzdCh0ZW1wID0gNCwgY2hhbmNlX3JhaW4gPSA1OCwgd2luZF9zcCA9IDExKSxcbiAgICAgICAgICAgICAgICAgICAgU2F0dXJkYXkgPSBsaXN0KHRlbXAgPSA1LCBjaGFuY2VfcmFpbiA9IDMxLCB3aW5kX3NwID0gMTApXG4pXG5cbndlYXRoZXJfZWtcbmBgYCJ9 -->
-<pre class="r"><code>weather_ek &lt;- list(
-                    Thursday = list(temp = 2, chance_rain = 33, wind_sp = 9),
-                    Friday = list(temp = 4, chance_rain = 58, wind_sp = 11),
-                    Saturday = list(temp = 5, chance_rain = 31, wind_sp = 10)
-)
-
-weather_ek</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiJFRodXJzZGF5XG4kVGh1cnNkYXkkdGVtcFxuWzFdIDJcblxuJFRodXJzZGF5JGNoYW5jZV9yYWluXG5bMV0gMzNcblxuJFRodXJzZGF5JHdpbmRfc3BcblsxXSA5XG5cblxuJEZyaWRheVxuJEZyaWRheSR0ZW1wXG5bMV0gNFxuXG4kRnJpZGF5JGNoYW5jZV9yYWluXG5bMV0gNThcblxuJEZyaWRheSR3aW5kX3NwXG5bMV0gMTFcblxuXG4kU2F0dXJkYXlcbiRTYXR1cmRheSR0ZW1wXG5bMV0gNVxuXG4kU2F0dXJkYXkkY2hhbmNlX3JhaW5cblsxXSAzMVxuXG4kU2F0dXJkYXkkd2luZF9zcFxuWzFdIDEwXG4ifQ== -->
-<pre><code>$Thursday
-$Thursday$temp
-[1] 2
-
-$Thursday$chance_rain
-[1] 33
-
-$Thursday$wind_sp
-[1] 9
-
-
-$Friday
-$Friday$temp
-[1] 4
-
-$Friday$chance_rain
-[1] 58
-
-$Friday$wind_sp
-[1] 11
-
-
-$Saturday
-$Saturday$temp
-[1] 5
-
-$Saturday$chance_rain
-[1] 31
-
-$Saturday$wind_sp
-[1] 10</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Using the list you’ve just made find:</p>
-<p>The chance of rain tomorrow The wind speed on the day after tomorrow The temperature tomorrow.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2VhdGhlcl9layRGcmlkYXkkY2hhbmNlX3JhaW5cblxuYGBgIn0= -->
-<pre class="r"><code>weather_ek$Friday$chance_rain
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDU4XG4ifQ== -->
-<pre><code>[1] 58</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2VhdGhlcl9layRTYXR1cmRheSR3aW5kX3NwXG5cbmBgYCJ9 -->
-<pre class="r"><code>weather_ek$Saturday$wind_sp
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEwXG4ifQ== -->
-<pre><code>[1] 10</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2VhdGhlcl9layRUaHVyc2RheSR0ZW1wXG5cbmBgYCJ9 -->
-<pre class="r"><code>weather_ek$Thursday$temp
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDJcbiJ9 -->
-<pre><code>[1] 2</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Find a 14 day forecast online and create a matrix of the forecasts for temperature, where each week is one row and columns correspond to days.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGVtcCA8LSBtYXRyaXgoYygyLDQsNSwzLDMsNSw1LDYsNyw2LDYsNiw2LDUpLCBucm93ID0gMiwgbmNvbCA9IDcsIGJ5cm93ID0gVFJVRSlcbmBgYCJ9 -->
-<pre class="r"><code>temp &lt;- matrix(c(2,4,5,3,3,5,5,6,7,6,6,6,6,5), nrow = 2, ncol = 7, byrow = TRUE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGVtcFxuYGBgIn0= -->
-<pre class="r"><code>temp</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXSBbLDRdIFssNV0gWyw2XSBbLDddXG5bMSxdICAgIDIgICAgNCAgICA1ICAgIDMgICAgMyAgICA1ICAgIDVcblsyLF0gICAgNiAgICA3ICAgIDYgICAgNiAgICA2ICAgIDYgICAgNVxuIn0= -->
-<pre><code>     [,1] [,2] [,3] [,4] [,5] [,6] [,7]
-[1,]    2    4    5    3    3    5    5
-[2,]    6    7    6    6    6    6    5</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>The third day of the second week</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGVtcFsyLDNdXG5cbmBgYCJ9 -->
-<pre class="r"><code>temp[2,3]
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDZcbiJ9 -->
-<pre><code>[1] 6</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>The whole second week</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG50ZW1wWzIsIF1cbmBgYCJ9 -->
-<pre class="r"><code>
-temp[2, ]</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDYgNyA2IDYgNiA2IDVcbiJ9 -->
-<pre><code>[1] 6 7 6 6 6 6 5</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>The first, third and fifth days in both weeks</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG50ZW1wWywgYygxLCAzLCA1KV1cbmBgYCJ9 -->
-<pre class="r"><code>
-temp[, c(1, 3, 5)]</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXVxuWzEsXSAgICAyICAgIDUgICAgM1xuWzIsXSAgICA2ICAgIDYgICAgNlxuIn0= -->
-<pre><code>     [,1] [,2] [,3]
-[1,]    2    5    3
-[2,]    6    6    6</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Write a function that pre-appends “The answer is:” to any character input, while for numeric input, it either just returns the number for numbers less than 10, or divides the number by 10 for numbers greater than 10. For anything else return “Invalid input”.</p>
-<p>#if x = a:z then return “This answer is : (value of X) #else if x&lt; 10 then return (value of x) ,else return”Invalid Input&quot;</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICB4Y2FsYyA8LSBmdW5jdGlvbih4KXtcbiAgaWYgeCA9ICBcIkE6WlwiIHBhc3RlKFwiaGtkc2hrZHNoa1wiLCB4LCBzZXAgPSAnJykgIFxuYGBgIn0= -->
-<pre class="r"><code>  xcalc &lt;- function(x){
-  if x =  &quot;A:Z&quot; paste(&quot;hkdshkdshk&quot;, x, sep = &#39;&#39;)  </code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6IHVuZXhwZWN0ZWQgc3ltYm9sIGluOlxuXCIgIHhjYWxjIDwtIGZ1bmN0aW9uKHgpe1xuICBpZiB4XCJcbiJ9 -->
-<pre><code>Error: unexpected symbol in:
-&quot;  xcalc &lt;- function(x){
-  if x&quot;</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5saWJyYXJ5KHN0cmluZ3IpXG5cbnggPC0gXCJhXCJcblxueGNhbGMgPC0gZnVuY3Rpb24oeCl7XG5cbiAgaWYoIWdyZXBsKFwiXFxcXGRcIiwgeCl7XG5gYGAifQ== -->
-<pre class="r"><code>
-library(stringr)
-
-x &lt;- &quot;a&quot;
-
-xcalc &lt;- function(x){
-
-  if(!grepl(&quot;\\d&quot;, x){</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6IHVuZXhwZWN0ZWQgJ3snIGluOlxuXCJcbiAgaWYoIWdyZXBsKFwiXFxcXGRcIiwgeCl7XCJcbiJ9 -->
-<pre><code>Error: unexpected &#39;{&#39; in:
-&quot;
-  if(!grepl(&quot;\\d&quot;, x){&quot;</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Write a function which checks if two vectors have the same elements.</p>
-<p>If they have the same elements in the same order, return “Exactly the same” If they have the same elements but in a different order, return “The same” If they don’t have the same elements, return “Different”</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmVjdDEgPC0gYygxLDIpXG52ZWN0MiA8LSBjKDEsMilcblxuY2hlY2tlcXVhbCA8LSBmdW5jdGlvbih4LHkpe1xuICAgcmV0dXJuKHggPT0geSlcbiAgXG4gIFxufVxuICBcbmBgYCJ9 -->
-<pre class="r"><code>vect1 &lt;- c(1,2)
-vect2 &lt;- c(1,2)
-
-checkequal &lt;- function(x,y){
-   return(x == y)
-  
-  
-}
-  </code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueV9mdW5jdGlvbjEgPC0gZnVuY3Rpb24oeCl7XG4gIGlmKGlzLmNoYXJhY3Rlcih4KSl7XG4gIHByaW50KHN0cl9jKFwiVGhlIGFuc3dlciBpczpcIiwgeCwgc2VwID0gXCIgXCIpKVxuICB9IGVsc2UgaWYoaXMubnVtZXJpYyh4KSl7XG4gICAgaWYoeCA8IDEwKXtcbiAgICAgIHJldHVybiAoeClcbiAgICB9ZWxzZSB7XG4gICAgICByZXR1cm4gKHgvMTApXG4gICAgfVxuICB9IGVsc2Uge1xuICBwcmludChcIkludmFsaWQgSW5wdXRcIilcbiAgfVxufVxuYGBgIn0= -->
-<pre class="r"><code>y_function1 &lt;- function(x){
-  if(is.character(x)){
-  print(str_c(&quot;The answer is:&quot;, x, sep = &quot; &quot;))
-  } else if(is.numeric(x)){
-    if(x &lt; 10){
-      return (x)
-    }else {
-      return (x/10)
-    }
-  } else {
-  print(&quot;Invalid Input&quot;)
-  }
-}</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueV9mdW5jdGlvbjEoXCJhXCIpXG5cbmBgYCJ9 -->
-<pre class="r"><code>y_function1(&quot;a&quot;)
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiVGhlIGFuc3dlciBpczogYVwiXG4ifQ== -->
-<pre><code>[1] &quot;The answer is: a&quot;</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkodGlkeXZlcnNlKQpgYGAKCgoKc3R1ZGVudF9pbmZvIDwtIGxpc3QoCiAgICAgICAgICAgICAgICAiQWduZXMiID0gbGlzdChoZWlnaHQgPSAxLjgsIHNob2Vfc2l6ZSA9IDhMKSwKICAgICAgICAgICAgICAgICJCb2JieSIgPSBsaXN0KGhlaWdodCA9IDIuMSwgZ2VuZGVyID0gIk1hbGUiKSwKICAgICAgICAgICAgICAgICJDaGFybGllIiA9IGxpc3QoZ2VuZGVyID0gIkZlbWFsZSIsIGxpa2VzX2JlZXRzID0gVFJVRSkKKQpuYW1lcyhzdHVkZW50X2luZm8pYAoKCgpgYGB7cn0Kd2VhdGhlcl9layA8LSBsaXN0KAogICAgICAgICAgICAgICAgICAgIFRodXJzZGF5ID0gbGlzdCh0ZW1wID0gMiwgY2hhbmNlX3JhaW4gPSAzMywgd2luZF9zcCA9IDkpLAogICAgICAgICAgICAgICAgICAgIEZyaWRheSA9IGxpc3QodGVtcCA9IDQsIGNoYW5jZV9yYWluID0gNTgsIHdpbmRfc3AgPSAxMSksCiAgICAgICAgICAgICAgICAgICAgU2F0dXJkYXkgPSBsaXN0KHRlbXAgPSA1LCBjaGFuY2VfcmFpbiA9IDMxLCB3aW5kX3NwID0gMTApCikKCndlYXRoZXJfZWsKCgpgYGAKClVzaW5nIHRoZSBsaXN0IHlvdeKAmXZlIGp1c3QgbWFkZSBmaW5kOgoKVGhlIGNoYW5jZSBvZiByYWluIHRvbW9ycm93ClRoZSB3aW5kIHNwZWVkIG9uIHRoZSBkYXkgYWZ0ZXIgdG9tb3Jyb3cKVGhlIHRlbXBlcmF0dXJlIHRvbW9ycm93LgoKCgoKYGBge3J9CndlYXRoZXJfZWskRnJpZGF5JGNoYW5jZV9yYWluCmBgYAogICAgCmBgYHtyfQp3ZWF0aGVyX2VrJFNhdHVyZGF5JHdpbmRfc3AKYGBgCiAgICAKYGBge3J9CndlYXRoZXJfZWskVGh1cnNkYXkkdGVtcApgYGAKICAgIApGaW5kIGEgMTQgZGF5IGZvcmVjYXN0IG9ubGluZSBhbmQgY3JlYXRlIGEgbWF0cml4IG9mIHRoZSBmb3JlY2FzdHMgZm9yIHRlbXBlcmF0dXJlLCB3aGVyZSBlYWNoIHdlZWsgaXMgb25lIHJvdyBhbmQgY29sdW1ucyBjb3JyZXNwb25kIHRvIGRheXMuCmBgYHtyfQp0ZW1wIDwtIG1hdHJpeChjKDIsNCw1LDMsMyw1LDUsNiw3LDYsNiw2LDYsNSksIG5yb3cgPSAyLCBuY29sID0gNywgYnlyb3cgPSBUUlVFKQpgYGAKCmBgYHtyfQp0ZW1wCmBgYAoKClRoZSB0aGlyZCBkYXkgb2YgdGhlIHNlY29uZCB3ZWVrCmBgYHtyfQp0ZW1wWzIsM10KYGBgCgpUaGUgd2hvbGUgc2Vjb25kIHdlZWsKYGBge3J9Cgp0ZW1wWzIsIF0KCgpgYGAKClRoZSBmaXJzdCwgdGhpcmQgYW5kIGZpZnRoIGRheXMgaW4gYm90aCB3ZWVrcwoKCmBgYHtyfQoKdGVtcFssIGMoMSwgMywgNSldCgpgYGAKCgoKCldyaXRlIGEgZnVuY3Rpb24gdGhhdCBwcmUtYXBwZW5kcyDigJxUaGUgYW5zd2VyIGlzOuKAnSB0byBhbnkgY2hhcmFjdGVyIGlucHV0LCB3aGlsZSBmb3IgbnVtZXJpYyBpbnB1dCwgaXQgZWl0aGVyIGp1c3QgcmV0dXJucyB0aGUgbnVtYmVyIGZvciBudW1iZXJzIGxlc3MgdGhhbiAxMCwgb3IgZGl2aWRlcyB0aGUgbnVtYmVyIGJ5IDEwIGZvciBudW1iZXJzIGdyZWF0ZXIgdGhhbiAxMC4gRm9yIGFueXRoaW5nIGVsc2UgcmV0dXJuIOKAnEludmFsaWQgaW5wdXTigJ0uCgoKCiNpZiB4ID0gYTp6IHRoZW4gcmV0dXJuICJUaGlzIGFuc3dlciBpcyA6ICh2YWx1ZSBvZiBYKQojZWxzZSBpZiB4PCAxMCB0aGVuIHJldHVybiAodmFsdWUgb2YgeCkgLGVsc2UgcmV0dXJuICJJbnZhbGlkIElucHV0IgoKYGBge3J9CiAgeGNhbGMgPC0gZnVuY3Rpb24oeCl7CiAgaWYgeCA9IFtbQTpaXV0sIHgsIHNlcCA9ICcnKSAgCiAgfQogIAp4Y2FsY1tBXQoKYGBgCgoKCgoKYGBge3J9CgpsaWJyYXJ5KHN0cmluZ3IpCgp4IDwtICJhIgoKeGNhbGMgPC0gZnVuY3Rpb24oeCl7CgogIGlmKCFncmVwbCgiXFxkIiwgeCkKICAgICB7CiAgCiAgICBwcmludCgidGhpcyBhbnN3ZXIgaXM6IiwgeCkKICAgIH1lbHNlIGlmICh4IDwgMTApewogICAgICBwcmludCh4KQogICAgICB9ZWxzZQogICAgcHJpbnQoIkludmFsaWQgSW5wdXQiKQogIH0KeGNhbGMoeCkKCmBgYAoKCldyaXRlIGEgZnVuY3Rpb24gd2hpY2ggY2hlY2tzIGlmIHR3byB2ZWN0b3JzIGhhdmUgdGhlIHNhbWUgZWxlbWVudHMuCgpJZiB0aGV5IGhhdmUgdGhlIHNhbWUgZWxlbWVudHMgaW4gdGhlIHNhbWUgb3JkZXIsIHJldHVybiDigJxFeGFjdGx5IHRoZSBzYW1l4oCdCklmIHRoZXkgaGF2ZSB0aGUgc2FtZSBlbGVtZW50cyBidXQgaW4gYSBkaWZmZXJlbnQgb3JkZXIsIHJldHVybiDigJxUaGUgc2FtZeKAnQpJZiB0aGV5IGRvbuKAmXQgaGF2ZSB0aGUgc2FtZSBlbGVtZW50cywgcmV0dXJuIOKAnERpZmZlcmVudOKAnQpgYGB7cn0KdmVjdDEgPC0gYygxLDIpCnZlY3QyIDwtIGMoMSwyKQoKY2hlY2tlcXVhbCA8LSBmdW5jdGlvbih4LHkpewogICByZXR1cm4oeCA9PSB5KQogIAogIAp9CiAgCmBgYAoKYGBge3J9CnlfZnVuY3Rpb24xIDwtIGZ1bmN0aW9uKHgpewogIGlmKGlzLmNoYXJhY3Rlcih4KSl7CiAgcHJpbnQoc3RyX2MoIlRoZSBhbnN3ZXIgaXM6IiwgeCwgc2VwID0gIiAiKSkKICB9IGVsc2UgaWYoaXMubnVtZXJpYyh4KSl7CiAgICBpZih4IDwgMTApewogICAgICByZXR1cm4gKHgpCiAgICB9ZWxzZSB7CiAgICAgIHJldHVybiAoeC8xMCkKICAgIH0KICB9IGVsc2UgewogIHByaW50KCJJbnZhbGlkIElucHV0IikKICB9Cn0KYGBgCgpgYGB7cn0KeV9mdW5jdGlvbjEoImEiKQoKYGBgCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkodGlkeXZlcnNlKQpgYGAKCg==</div>
 
 
 
@@ -2089,7 +1868,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("wk2d3 homework MarkH.Rmd");
+  window.initializeSourceEmbed("Testunit testing mh.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>
