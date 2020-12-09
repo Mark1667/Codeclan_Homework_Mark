@@ -50,16 +50,16 @@ ORDER BY last_name NULLS LAST, first_name NULLS LAST
 --Q7 How many employees have a first_name beginning with ‘F’?
 
 SELECT
-COUNT(*) AS employee_begins_f
+COUNT(id) AS employee_begins_f
 FROM employees
-WHERE first_name LIKE 'F%'
+WHERE first_name ILIKE 'F%'
 
 
 
 --Q8 Count the number of pension enrolled employees not based in either France or Germany.
 
 SELECT 
-COUNT(*) AS pension_count_not_France_Germany
+COUNT(id) AS pension_count_not_France_Germany
 FROM employees
 WHERE pension_enrol = TRUE AND (country != 'Germany' AND country != 'France')
 
@@ -73,7 +73,7 @@ SELECT
 department,
 COUNT(*) total_startcount_2003
 FROM employees
-WHERE start_date >'2002-12-31' and start_date <'2004-01-01' 
+WHERE start_date >'2002-12-31' BETWEEN start_date <'2004-01-01' 
 GROUP BY department
 
 
@@ -96,10 +96,11 @@ ORDER BY department , fte_hours ASC
 
 SELECT
 department,
-COUNT(*) AS missing_count
+COUNT(id) AS missing_count
 FROM employees
 WHERE first_name IS NULL 
 GROUP BY department
+HAVING COUNT(id) >= 2
 ORDER BY missing_count DESC, department ASC
 
 
@@ -135,3 +136,15 @@ SELECT *
 FROM employees
 WHERE grade = 1 
 GROUP BY department
+
+-- ANSWER Q12
+
+SELECT 
+  department, 
+  SUM(CAST(grade = '1' AS INT)) / CAST(COUNT(id) AS REAL) AS prop_grade_1 
+FROM employees 
+GROUP BY department
+
+
+
+
