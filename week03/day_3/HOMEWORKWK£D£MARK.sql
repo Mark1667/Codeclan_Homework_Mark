@@ -32,9 +32,10 @@ SELECT
 first_name,
 last_name, 
 salary
+WHERE country = "Hungary"
 FROM employees
 ORDER BY salary ASC NULLS LAST
-LIMIT 10
+LIMIT 1
 
 
 -- Q5.*Find all the details of any employees with a ‘yahoo’ email address?
@@ -61,10 +62,7 @@ GROUP BY pension_enrol
 -- Q7.*What is the maximum salary among those employees in the ‘Engineering’ department who work 1.0 full-time equivalent hours (fte_hours)?
 
 SELECT 
-first_name,
-last_name,
-department,
-fte_hours
+MAX(salary) AS max_salary_engineering_1_ftehours
 FROM employees
 WHERE department = 'Engineering' AND fte_hours = 1
 
@@ -76,10 +74,11 @@ WHERE department = 'Engineering' AND fte_hours = 1
 SELECT 
 country,
 COUNT(id) AS num_employees,
-AVG(salary) AS avg_salary
+AVG(salary) AS average_salary
 FROM employees
 GROUP BY country
 HAVING COUNT(id) > 30
+ORDER BY average_salary DESC
 
 
 -- Q9 Return a table containing each employees first_name, last_name, full-time equivalent hours (fte_hours), salary, and a new column 
@@ -93,6 +92,7 @@ fte_hours,
 salary,
 fte_hours * salary AS effective_yearly_salary
 FROM employees
+ORDER BY effective_yearly_salary
 
 -- Q10 Find the first name and last name of all employees who lack a local_tax_code.
 
@@ -140,14 +140,27 @@ ORDER BY COUNT DESC, first_name
  --Add two extra columns showing the ratio of each employee’s salary to that department’s average salary, 
  --and each employee’s fte_hours to that department’s average fte_hours.
 
-SELECT 
-id, 
-first_name, 
-last_name, 
-salary,
-fte_hours
-max(count(department))
-FROM employees
+WITH biggest_dept_details(name, avg_salary, avg_fte_hours) AS (
+  SELECT 
+     department,
+     AVG(salary),
+     AVG(fte_hours)
+  FROM employees
+  GROUP BY department
+  ORDER BY COUNT(id) DESC NULLS LAST
+  LIMIT 1
+)
+SELECT
+  e.id,
+  e.first_name,
+  e.last_name,
+  e.department,
+  e.salary,
+  e.fte_hours,
+  e.salary / bdd.avg_salary AS salary_over_dept_avg,
+  e.fte_hours / bdd.avg_fte_hours AS fte_hours_over_dept_avg
+FROM employees AS e CROSS JOIN biggest_dept_details AS bdd
+WHERE department = bdd.name
 
 
 
